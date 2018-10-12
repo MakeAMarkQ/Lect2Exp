@@ -22,12 +22,35 @@ public class RunApp {
             System.out.println(m.getKey());
         }
         while(true) {
+            System.out.println("get maa lue tiedot, set maa aseta: ");
             String str_UserInput =
                     handleInput.getUserInput();
-            System.out.println("Vastauksesi: "+str_UserInput);
             if (str_UserInput.equals("exit")) {
                 return;
+            }
+            else {
+                String[] strOsat = str_UserInput.split(" ");
+                if(strOsat.length!=2)
+                {
+                    System.out.println("Oletko nyt ainan varma mitä haluat!");
+                }
+                else {
+                    System.out.println("Haluat: " + strOsat[0] + " Maasta " + strOsat[1]);
+                    if (strOsat[0].equals("get")) {
+                        System.out.println("Haluat: " +strOsat[1]+" tiedot");
+                        if(map.containsKey(strOsat[1])){
+                            System.out.println(strOsat[1]+ " JH: "+
+                                    map.get(strOsat[1]).getStrLeader()+" P: "+
+                                    map.get(strOsat[1]).getStrPopulation());
+                        }
+                    } else if(strOsat[0].equals("set")){
+                        System.out.println("Muutat: " +strOsat[1]+" tiedot");
 
+                    } else{
+
+                                System.out.println("Oletko nyt ainan varma mitä haluat!");
+                    }
+                }
             }
         }
     }
