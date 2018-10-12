@@ -37,15 +37,29 @@ public class RunApp {
                 else {
                     System.out.println("Haluat: " + strOsat[0] + " Maasta " + strOsat[1]);
                     if (strOsat[0].equals("get")) {
-                        System.out.println("Haluat: " +strOsat[1]+" tiedot");
                         if(map.containsKey(strOsat[1])){
                             System.out.println(strOsat[1]+ " JH: "+
                                     map.get(strOsat[1]).getStrLeader()+" P: "+
                                     map.get(strOsat[1]).getStrPopulation());
                         }
-                    } else if(strOsat[0].equals("set")){
-                        System.out.println("Muutat: " +strOsat[1]+" tiedot");
+                        else
+                            System.out.println("Ei ollut: " +strOsat[1]+"a");
 
+                    } else if(strOsat[0].equals("set")) {
+                        System.out.println("Muutat: " + strOsat[1] + " tiedot, l=johtaja, p=asukkaat");
+                        String str_muuta =
+                                handleInput.getUserInput();
+                        if (str_muuta.equals("l")) {
+                            System.out.println("Anna " + strOsat[1] + " johtaja?");
+                            map.get(strOsat[1]).setStrLeader(
+                                    handleInput.getUserInput());
+                        } else if (str_muuta.equals("p")) {
+                            System.out.println("Anna " + strOsat[1] + " asukasmäärä?");
+                            map.get(strOsat[1]).setStrPopulation(
+                                    handleInput.getUserInput());
+                        } else{
+                            System.out.println("Oletko nyt ainan varma mitä haluat!");
+                    }
                     } else{
 
                                 System.out.println("Oletko nyt ainan varma mitä haluat!");
